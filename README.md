@@ -21,3 +21,7 @@ To streamline the functionality of the application, we make the following assump
 - **Payment Process:** Pressing the "Pay Rs 500" button triggers an abstract information request, allowing the backend to initiate a payment using the `CreatePayment` function. The response is then sent to the user based on the payment status.
 
 - **Subscription Details:** Users can retrieve their subscription details from another form included in the project.
+
+## Designs
+
+![Diagram 1](/public/design.svg)
