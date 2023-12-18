@@ -153,7 +153,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         // data,
-        data: "test",
+        data: "Created",
       },
       {
         status: 200,
