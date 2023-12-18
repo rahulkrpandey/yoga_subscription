@@ -13,7 +13,7 @@ interface User {
   password: string;
 }
 
-interface Order {
+interface Subscriptions {
   id: string;
   subscription_date: string;
   expiry_date: string;
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
       throw new Error("User not authenticated");
     } else {
       const { data, error } = await supabase
-        .from("orders")
+        .from("subscriptions")
         .select()
         .eq("user_number", user.mob_number);
       if (error) {
@@ -60,9 +60,9 @@ export async function POST(req: NextRequest) {
         throw new Error("Valid subscription does not exist");
       }
 
-      const order = data[0] as Order;
-      const subsDate = new Date(order.subscription_date);
-      const expDate = new Date(order.expiry_date);
+      const subscription = data[0] as Subscriptions;
+      const subsDate = new Date(subscription.subscription_date);
+      const expDate = new Date(subscription.expiry_date);
       if (subsDate > expDate) {
         throw new Error("Subscription is expired");
       }
@@ -72,9 +72,9 @@ export async function POST(req: NextRequest) {
           name: user.name,
           phoneNumber: user.mob_number,
           birthday: user.birthday,
-          subscriptionDate: order.subscription_date,
-          expiryDate: order.expiry_date,
-          batch: order.batch,
+          subscriptionDate: subscription.subscription_date,
+          expiryDate: subscription.expiry_date,
+          batch: subscription.batch,
         },
       });
     }

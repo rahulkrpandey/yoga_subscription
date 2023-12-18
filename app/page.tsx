@@ -7,5 +7,9 @@ export default function Home() {
   useEffect(() => {
     router.push("/getSubscription");
   }, []);
-  return <main className="">Page is available: base/getSubscription</main>;
+  return (
+    <main className="">
+      https://yoga-subscription-qv9z.vercel.app/getSubscription
+    </main>
+  );
 }

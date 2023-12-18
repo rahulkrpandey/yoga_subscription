@@ -13,16 +13,12 @@ interface User {
   password: string;
 }
 
-interface Order {
+interface Subscription {
   id: string;
   subscription_date: string;
   expiry_date: string;
   batch: string;
   user_number: string;
-}
-
-interface Batch {
-  batch: string;
 }
 
 interface ReqData {
@@ -75,19 +71,19 @@ export async function POST(req: NextRequest) {
         throw new Error("User exists, but birthday is wrong");
       }
 
-      const orderDataOrError = await supabase
-        .from("orders")
+      const subscriptionOrError = await supabase
+        .from("subscriptions")
         .select()
         .eq("user_number", user.mob_number);
-      if (orderDataOrError.error) {
-        throw orderDataOrError.error;
+      if (subscriptionOrError.error) {
+        throw subscriptionOrError.error;
       }
 
-      const order = orderDataOrError.data[0] as Order;
-      if (order) {
-        // console.log(order);
-        const subsDate = new Date(order.subscription_date);
-        const expDate = new Date(order.expiry_date);
+      const subscription = subscriptionOrError.data[0] as Subscription;
+      if (subscription) {
+        // console.log(subscription);
+        const subsDate = new Date(subscription.subscription_date);
+        const expDate = new Date(subscription.expiry_date);
         if (subsDate <= expDate) {
           throw new Error("Valid subscription already exist");
         }
@@ -109,7 +105,7 @@ export async function POST(req: NextRequest) {
     if (paymentResponse) {
       //   console.log("payment is successfull");
       const { data, error } = await supabase
-        .from("orders")
+        .from("subscriptions")
         .select()
         .eq("user_number", subsData.mob_number);
       if (error) {
@@ -119,7 +115,7 @@ export async function POST(req: NextRequest) {
       if (data.length > 0) {
         // if user has subscribed previously, then update subscription
         const { error } = await supabase
-          .from("orders")
+          .from("subscriptions")
           .update({
             subscription_date: new Date().toISOString(),
             expiry_date: subsData.expiry_date,
@@ -133,7 +129,7 @@ export async function POST(req: NextRequest) {
       } else {
         // create subscription
         const { error } = await supabase
-          .from("orders")
+          .from("subscriptions")
           .insert({
             subscription_date: new Date().toISOString(),
             expiry_date: subsData.expiry_date,
@@ -153,7 +149,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         // data,
-        data: "Created",
+        data: "test",
       },
       {
         status: 200,
