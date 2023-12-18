@@ -1,7 +1,5 @@
 "use client";
 
-// import { Toaster } from "@/components/ui/toaster";
-// import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState, useRef } from "react";
@@ -425,7 +423,7 @@ export default function GetPlans() {
             href={"/getSubscriptionDetails"}
             className=" text-emerald-600 ml-1"
           >
-            Get token
+            Get subscription details
           </Link>
         </div>
       </form>
