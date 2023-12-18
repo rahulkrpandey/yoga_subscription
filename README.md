@@ -1,6 +1,6 @@
 # Membership Form [Visit](https://yoga-subscription-qv9z.vercel.app/getSubscription).
 
-## Introduction
+## Introduction to NextJs Project
 
 Welcome to the Membership Form project! The project was built with the following tech stack, Next.js (React.js framework), Tailwind CSS, Supabase (PostgreSQL database service).
 
