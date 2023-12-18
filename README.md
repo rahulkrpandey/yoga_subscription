@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to the Membership Form project!
+Welcome to the Membership Form project! The project was built with the following tech stack, Next.js (React.js framework), Tailwind CSS, Supabase (PostgreSQL database service).
 
 - **Age Requirement:** Users between the ages of 18 and 65 are eligible to subscribe.
 
