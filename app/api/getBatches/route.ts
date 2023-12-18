@@ -1,14 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-export const supabase = createClient(
+const supabase = createClient(
   process.env.SUPABASE_URL || "",
   process.env.SERVICE_KEY || ""
 );
-
-interface Batch {
-  batch: string;
-}
 
 export async function GET(req: NextRequest) {
   try {
@@ -19,12 +15,12 @@ export async function GET(req: NextRequest) {
       throw error;
     }
 
-    const batches = data.map((batchObj) => batchObj.batch);
-    console.log("data: ", batches);
+    // const batches = data.map((batchObj) => batchObj.batch);
+    console.log("data: ", data);
 
     return NextResponse.json(
       {
-        data: batches,
+        data: data,
       },
       {
         status: 200,

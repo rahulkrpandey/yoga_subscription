@@ -248,7 +248,7 @@ export default function GetPlans() {
 
         {/* Navigate to login page */}
         <div className="w-full text-sm text-center">
-          Don't have a subscription?
+          Don&apos;t have a subscription?
           <Link href={"/getSubscription"} className=" text-emerald-600 ml-1">
             Get subscription
           </Link>

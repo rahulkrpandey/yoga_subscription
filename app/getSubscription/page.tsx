@@ -159,8 +159,9 @@ export default function GetPlans() {
     const populateBatches = async () => {
       try {
         const res = await axios.get("/api/getBatches");
-        const data = res.data.data as string[];
-        setBatches(data);
+        const data = res.data.data as { batch: string }[];
+        const batchesArr = data.map((obj) => obj.batch);
+        setBatches(batchesArr);
       } catch (err: any) {
         console.log(err);
         setErrorMessage("Batches could not be populated");
