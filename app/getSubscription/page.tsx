@@ -4,7 +4,7 @@
 // import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useState, useRef } from "react";
 import axios from "axios";
 
 interface FormType {
@@ -39,7 +39,7 @@ export default function GetPlans() {
 
   const lastDate = lastDateObject.getDate().toString().padStart(2, "0");
   const lastFullDate = `${lastDate}-${month}-${year}`;
-//   console.log(lastFullDate);
+  //   console.log(lastFullDate);
 
   const [form, setForm] = useState<FormType>({
     name: "",
@@ -51,7 +51,6 @@ export default function GetPlans() {
 
   const router = useRouter();
   const [showBatches, setShowBatches] = useState<boolean>(false);
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
   //   const { toast } = useToast();
   const mainRef = useRef<HTMLElement | null>(null);
   const [invalidStyle, setInvalidStyle] = useState<{
@@ -115,14 +114,6 @@ export default function GetPlans() {
         form.password.trim().length < 8
       ) {
         throw new Error("Form inputs are not valid");
-      }
-
-      if (buttonRef.current) {
-        const btn = buttonRef.current;
-        btn.style.backgroundColor = "#10a37ebc";
-        btn.style.outlineColor = "#e5e7eb";
-        btn.style.outlineWidth = "4px";
-        btn.style.outlineStyle = "solid";
       }
 
       setCurrentButtonStyle(buttonStyleForRequest);
