@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Membership Form [Visit](https://yoga-subscription-qv9z.vercel.app/getSubscription).
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+Welcome to the Membership Form project!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Age Requirement:** Users between the ages of 18 and 65 are eligible to subscribe.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Subscription Duration:** Users can subscribe any day of the month, and their subscription will be valid until the end of that month. For example, if a user joins on December 17, 2023, their subscription will be valid until December 31, 2023.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Batch Selection:** Once users subscribe to a batch, they cannot change batches for the duration of their valid subscription. Batch changes are allowed in the next subscription cycle.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Assumptions
 
-## Learn More
+To streamline the functionality of the application, we make the following assumptions:
 
-To learn more about Next.js, take a look at the following resources:
+- **User Identification:** Users are uniquely identified by their phone numbers.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Batch Subscription:** Users are not allowed to change batches during the month of their valid subscription. Additionally, they cannot subscribe to another batch during this time.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Payment Process:** Pressing the "Pay Rs 500" button triggers an abstract information request, allowing the backend to initiate a payment using the `CreatePayment` function. The response is then sent to the user based on the payment status.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Subscription Details:** Users can retrieve their subscription details from another form included in the project.
